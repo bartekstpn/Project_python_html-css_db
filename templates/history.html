@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Historia Posiłków</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Historia Posiłków</h1>
+        <ul>
+            {% for entry in history_data %}
+                <li>{{ entry.recipe }} - Dieta: {{ entry.chosen_diet }}, Wyłączając: {{ entry.ingredients_to_avoid }}, Komentarz: {{ entry.comment }}</li>
+            {% endfor %}
+        </ul>
+        <br>
+        <a href="/">Powrót</a>
+    </div>
+</body>
+</html>

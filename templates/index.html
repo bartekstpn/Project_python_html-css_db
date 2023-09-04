@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Przygotowywacz Planu Jedzenia</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Przygotowywacz Planu Jedzenia</h1>
+            {% if current_user.is_authenticated %}
+                <div class="user-info">
+                    <p>Zalogowany jako: {{ current_user.username }}</p>
+                    <a href="/logout">Wyloguj się</a>
+                </div>
+            {% endif %}
+        </div>
+        <form method="POST" action="/generate">
+            <label for="diet">Wybierz rodzaj diety:</label>
+            <select id="diet" name="diet">
+                <option value="vegan">Vegan</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="typical">Typical</option>
+            </select><br><br>
+
+            <label for="ingredients">Czego nie lubisz/nie możesz jeść (oddziel przecinkami):</label>
+            <input type="text" id="ingredients" name="ingredients"><br><br>
+
+            <label for="comment">Komentarz:</label>
+            <input type="text" id="comment" name="comment"><br><br>
+
+            <input type="submit" value="Generuj plan">
+        </form>
+        <br>
+        <a href="/history">Historia posiłków</a> |
+        <a href="/register">Rejestracja</a>
+    </div>
+</body>
+</html>
